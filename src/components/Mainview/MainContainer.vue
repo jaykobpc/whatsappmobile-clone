@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      selected_view: "CallsContainer"
+      selected_view: "ChatContainer"
     };
   }
 };
