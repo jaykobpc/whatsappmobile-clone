@@ -5,15 +5,31 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: "App",
+  mounted() {
+    this.preventImageSelect();
+    this.preventContextMenu();
+  },
   data() {
-    return {
-
+    return {};
+  },
+  methods: {
+    preventImageSelect() {
+      var imageview = document.querySelectorAll("img");
+      imageview.forEach(imageView => {
+        imageView.addEventListener("contextmenu", e => {
+          e.preventDefault();
+        });
+      });
+    },
+    preventContextMenu() {
+      window.addEventListener("contextmenu", e => {
+        e.preventDefault();
+      });
     }
   }
-}
+};
 </script>
 
 <style>
@@ -24,6 +40,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 html {
@@ -32,15 +49,14 @@ html {
 }
 
 img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+  font-family: "Open Sans", sans-serif, Arial, Helvetica;
   -webkit-tap-highlight-color: transparent;
 }
-
 </style>

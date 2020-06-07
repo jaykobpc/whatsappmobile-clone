@@ -116,10 +116,10 @@
 export default {
   name: "Chatview",
   beforeMount() {
-      this.auto_height();
+    this.auto_height();
   },
   created() {
-      this.auto_height();
+    this.auto_height();
   },
   mounted() {
     this.auto_height();
@@ -129,51 +129,75 @@ export default {
       chatData: [
         {
           id: 1,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "Hi! I would like to order some pizza for lunch?",
+          time: "12:30",
           is_sender: false
         },
         {
           id: 2,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "Welcome to pizza garden!",
+          time: "12:35",
           is_sender: true
         },
         {
           id: 3,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
-          is_sender: false
-        },
-        {
-          id: 4,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "Do you want to order the same flavour as yesterday?",
+          time: "12:36",
           is_sender: true
         },
         {
+          id: 4,
+          message: "Yes sir! the chicken and pep with extra toppings",
+          time: "12:38",
+          is_sender: false
+        },
+        {
           id: 5,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "And some cola or energy drink.",
+          time: "12:38",
           is_sender: false
         },
         {
           id: 6,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
-          is_sender: false
+          message: "Your order has been received!",
+          time: "12:45",
+          is_sender: true
         },
         {
           id: 7,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "You will pay once delivered.",
+          time: "12:46",
           is_sender: true
         },
         {
           id: 8,
-          message: "Hello, world from jaykob's cradle on medulla",
-          time: "03:34",
+          message: "Okay! have a nice afternoon!",
+          time: "12:50",
           is_sender: false
+        },
+        {
+          id: 9,
+          message: "How long should I wait for the delivery?",
+          time: "12:53",
+          is_sender: false
+        },
+        {
+          id: 10,
+          message: "You will receive your pizza in the next 20 minutes",
+          time: "12:55",
+          is_sender: true
+        },
+        {
+          id: 11,
+          message: "Okeey! dookeey!",
+          time: "12:58",
+          is_sender: false
+        },
+        {
+          id: 12,
+          message: "Thank you for ordering your pizza with Us!",
+          time: "13:00",
+          is_sender: true
         }
       ]
     };
@@ -191,7 +215,10 @@ export default {
       window.addEventListener("resize", () => {
         var chatArea = document.querySelector(".chatarea");
         var windowHeight = window.innerHeight;
-        chatArea.style.height = windowHeight - 122 + "px";
+
+        if (document.body.contains(chatArea)) {
+          chatArea.style.height = windowHeight - 122 + "px";
+        }
       });
     }
   }

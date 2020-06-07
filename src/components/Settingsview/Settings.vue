@@ -15,7 +15,7 @@
           <img src="../../Profiles/image4.jpeg" alt="sudo" class="settingsview__imagebox--image" />
         </div>
         <div class="settingsview__textview">
-          <h3 class="settingsview__textview--title">Jaykob's Cradle</h3>
+          <h3 class="settingsview__textview--title">Jaykob's byte</h3>
           <p class="settingsview__textview--smtext">Just another $programmer$ on steroids 😎😎</p>
         </div>
       </div>
