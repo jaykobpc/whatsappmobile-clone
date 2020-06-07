@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="chatsview__chatwidget">
+      <div @click="openContacts" class="chatsview__chatwidget">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path d="M0 0h24v24H0z" fill="none" />
           <path
@@ -185,6 +185,9 @@ export default {
   methods: {
     openChats() {
       this.$router.push('/chats');
+    },
+    openContacts() {
+      this.$router.push('/contacts');
     }
   },
 };
@@ -295,7 +298,7 @@ export default {
   background-color: #25d366;
   text-align: center;
   z-index: 999;
-  fill: $color-grey-300;
+  fill: $color-grey-100;
 }
 
 .text-green {

@@ -106,6 +106,7 @@ export default {
 
   &__iconwidget {
       position: fixed;
+      bottom: 25px;
       right: 20px;
       width: 5.5rem;
       height: 5.5rem;
@@ -113,6 +114,7 @@ export default {
       border-radius: 50%;
       text-align: center;
       z-index: 999;
+      fill: $color-grey-300;
   }
 }
 

@@ -13,13 +13,30 @@
             />
           </svg>
         </div>
-        <div class="topheader__widgets--iconview">
+        <div class="topheader__widgets--iconview listview_open">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path d="M0 0h24v24H0z" fill="none" />
             <path
               d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
             />
           </svg>
+          <div class="topheader__listitems">
+            <div class="topheader__tabview">
+              <h3 class="topheader__tabview--title">New group</h3>
+            </div>
+            <div class="topheader__tabview">
+              <h3 class="topheader__tabview--title">New broadcast</h3>
+            </div>
+            <div class="topheader__tabview">
+              <h3 class="topheader__tabview--title">WhatsApp Web</h3>
+            </div>
+            <div class="topheader__tabview">
+              <h3 class="topheader__tabview--title">Starred messages</h3>
+            </div>
+            <div @click="change_view" class="topheader__tabview">
+              <h3 class="topheader__tabview--title">Settings</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -31,6 +48,11 @@ export default {
   name: "Topheader",
   data() {
     return {};
+  },
+  methods: {
+    change_view() {
+      this.$router.push('/settings');
+    }
   }
 };
 </script>
@@ -48,6 +70,33 @@ export default {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: nowrap;
+  }
+
+  &__listitems {
+    display: none;
+    position: absolute;
+    background-color: $color-white;
+    right: 1rem;
+    width: 150px;
+    z-index: 999;
+    top: 15px;
+    box-shadow: 0 2px 5px rgba($color-grey-600, 0.5);
+  }
+
+  &__tabview {
+    padding: 0.8rem 1.1rem;
+    text-align: left;
+
+    &:hover {
+      background-color: $color-grey-200;
+    }
+
+    &--title {
+      font-family: inherit;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: $color-grey-600;
+    }
   }
 
   &__titlebox {
@@ -76,5 +125,9 @@ export default {
       text-align: center;
     }
   }
+}
+
+.listview_open:hover .topheader__listitems {
+  display: block;
 }
 </style>
