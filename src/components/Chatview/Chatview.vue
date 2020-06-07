@@ -50,7 +50,17 @@
       <div class="chatviews__chatarea">
         <div class="chatarea">
           <div class="chatarea__container">
-            <p>chat area</p>
+            <div
+              v-for="chat in chatData"
+              :key="chat.id"
+              :class="{ 'justify-flex-end': chat.is_sender }"
+              class="chatarea__flexitem"
+            >
+              <div :class="{ 'sender_msg': chat.is_sender }" class="chatarea__chatwidget">
+                <p class="chatarea__chatwidget--text">{{ chat.message }}</p>
+                <p class="chatarea__chatwidget--smtext">{{ chat.time }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -105,12 +115,84 @@
 <script>
 export default {
   name: "Chatview",
+  beforeMount() {
+      this.auto_height();
+  },
+  created() {
+      this.auto_height();
+  },
+  mounted() {
+    this.auto_height();
+  },
   data() {
-    return {};
+    return {
+      chatData: [
+        {
+          id: 1,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: false
+        },
+        {
+          id: 2,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: true
+        },
+        {
+          id: 3,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: false
+        },
+        {
+          id: 4,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: true
+        },
+        {
+          id: 5,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: false
+        },
+        {
+          id: 6,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: false
+        },
+        {
+          id: 7,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: true
+        },
+        {
+          id: 8,
+          message: "Hello, world from jaykob's cradle on medulla",
+          time: "03:34",
+          is_sender: false
+        }
+      ]
+    };
   },
   methods: {
     backHome() {
       this.$router.push("/");
+    },
+    auto_height() {
+      window.addEventListener("load", () => {
+        var chatArea = document.querySelector(".chatarea");
+        var windowHeight = window.innerHeight;
+        chatArea.style.height = windowHeight - 122 + "px";
+      });
+      window.addEventListener("resize", () => {
+        var chatArea = document.querySelector(".chatarea");
+        var windowHeight = window.innerHeight;
+        chatArea.style.height = windowHeight - 122 + "px";
+      });
     }
   }
 };
@@ -217,83 +299,124 @@ export default {
   order: 2;
   position: relative;
   z-index: 1;
-  height: 75vh;
+  //height: 75vh; /** Auto height enabled */
 
   &__container {
-    background-color: #e5ddd5;
     overflow-y: auto;
-    background-image: url("../../Profiles/chatbg.png");
+    background-image: url("../../assets/bg_whatsapp.png");
     background-position: center;
     background-repeat: repeat;
-    opacity: 0.06;
     height: 100%;
+  }
+
+  &__flexitem {
+    display: flex;
+    width: 100%;
+    padding: 0.8rem 1.1rem;
+  }
+
+  &__chatwidget {
+    background-color: $color-white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 0.6rem;
+    max-width: 220px;
+
+    &--text {
+      font-family: inherit;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: $color-dark;
+    }
+
+    &--smtext {
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $color-dark;
+      margin-top: 0.3rem;
+      float: right;
+      display: block;
+    }
   }
 }
 
 .chatwd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: #e5ddd5;
+  background-image: linear-gradient(rgba(#e5ddd5, 0.9), rgba(#e5ddd5, 0.9)),
+    url("../../Profiles/chatbg.png");
+  background-position: center;
+  background-repeat: repeat;
+  padding: 0.7rem 0.5rem;
+  height: 100%;
+
+  &__textview {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: row;
-    background-color: #e5ddd5;
-    background-image: linear-gradient(
-        rgba(#e5ddd5, 0.9),
-        rgba(#e5ddd5, 0.9)),
-        url("../../Profiles/chatbg.png");
-    background-position: center;
-    background-repeat: repeat;
-    padding: 0.6rem;
+    background-color: $color-white;
+    padding: 0.8rem;
+    border-radius: 35px;
+  }
 
-    &__textview {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        background-color: $color-white;
-        padding: 0.8rem;
-        border-radius: 35px;
+  &__iconbox {
+    fill: $color-grey-600;
+    margin-right: 0.2rem;
+  }
+
+  &__textarea {
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    color: $color-dark;
+  }
+
+  &__widgetsview {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &__iconselect {
+    fill: $color-grey-600;
+    margin: 0.3rem;
+  }
+
+  &__micview {
+    margin-left: 0.3rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #075e54;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0.7rem;
+
+    &--iconview {
+      fill: $color-white;
     }
+  }
+}
 
-    &__iconbox {
-        fill: $color-grey-600;
-        margin-right: 0.2rem;
-    }
+.justify-flex-end {
+  justify-content: flex-end;
+}
 
-    &__textarea {
-        display: block;
-        width: 100%;
-        font-family: inherit;
-        font-size: 1.3rem;
-        font-weight: 400;
-        padding: 0.5rem;
-        border: none;
-        outline: none;
-        color: $color-dark;
-    }
-
-    &__widgetsview {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-    }
-
-    &__iconselect {
-        fill: $color-grey-600;
-        margin: 0.3rem;
-    }
-
-    &__micview {
-        margin-left: 0.3rem;
-        width: 4rem;
-        height: 4rem;
-        background-color: #075e54;
-        border-radius: 50%;
-        text-align: center;
-        padding: 0.7rem;
-
-        &--iconview {
-            fill: $color-white;
-        }
-    }
+.sender_msg {
+  background-color: #dcf8c6;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 </style>
