@@ -39,7 +39,7 @@
             </div>
             <div v-for="contact in contactList" :key="contact.id" class="contactview__cardlist">
                 <div class="contactview__cardselect">
-                    <img :src="require(`../../Profiles/${contact.img}`)" :alt="contact.name" class="contactview__cardselect--image">
+                    <img :src="require(`@/Profiles/${contact.img}`)" :alt="contact.name" class="contactview__cardselect--image">
                 </div>
                 <div class="contactview__textselect">
                     <h3 class="contactview__textselect--title">{{ contact.name }}</h3>

@@ -12,7 +12,7 @@
       </div>
       <div class="settingsview__widgetview">
         <div class="settingsview__imagebox">
-          <img src="../../Profiles/image4.jpeg" alt="sudo" class="settingsview__imagebox--image" />
+          <img src="@/Profiles/image4.jpeg" alt="sudo" class="settingsview__imagebox--image" />
         </div>
         <div class="settingsview__textview">
           <h3 class="settingsview__textview--title">Jaykob's byte</h3>
@@ -135,13 +135,13 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.6rem;
+    padding: 1rem 0.6rem;
     position: fixed;
     width: 100%;
     top: 0;
 
     &--iconview {
-      fill: $color-grey-300;
+      fill: $color-white;
       width: 3.5rem;
       height: 3.5rem;
       border-radius: 50%;
@@ -153,7 +153,7 @@ export default {
       font-family: inherit;
       font-size: 1.5rem;
       font-weight: 500;
-      color: $color-grey-300;
+      color: $color-white;
       margin-left: 0.5rem;
     }
   }
@@ -164,7 +164,7 @@ export default {
     align-items: center;
     padding: 1.1rem;
     border-bottom: 1px solid $color-grey-200;
-    margin-top: 5rem;
+    margin-top: 6.5rem;
   }
 
   &__imagebox {

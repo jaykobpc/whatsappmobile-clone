@@ -59,4 +59,19 @@ body {
   font-family: "Open Sans", sans-serif, Arial, Helvetica;
   -webkit-tap-highlight-color: transparent;
 }
+
+@media only screen and (min-width: 900px) {
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsla(0, 0%, 100%, 0.1);
+  }
+}
 </style>

@@ -4,7 +4,7 @@
       <div v-for="calls in callData" :key="calls.id" class="callscard">
         <div class="callscard__imageview">
           <img
-            :src="require(`../../Profiles/${calls.img}`)"
+            :src="require(`@/Profiles/${calls.img}`)"
             :alt="calls.name"
             class="callscard__imageview--image"
           />

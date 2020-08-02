@@ -5,7 +5,7 @@
         <div class="statuscard__imageview">
           <img
             draggable="false"
-            src="../../Profiles/image2.jpeg"
+            src="@/Profiles/image2.jpeg"
             alt="status"
             class="statuscard__imageview--image"
           />
@@ -22,7 +22,7 @@
             <div class="statuscard__imageview">
               <img
                 draggable="false"
-                :src="require(`../../Profiles/${profile.img}`)"
+                :src="require(`@/Profiles/${profile.img}`)"
                 :alt="profile.name"
                 class="statuscard__imageview--image"
               />

@@ -4,7 +4,7 @@
       <div @click="openChats" v-for="profile in profileData" :key="profile.id" class="chatcard">
         <div class="chatcard__imageview">
           <img
-            :src="require(`../../Profiles/${profile.img}`)"
+            :src="require(`@/Profiles/${profile.img}`)"
             :alt="profile.name"
             class="chatcard__imageview--image"
           />
